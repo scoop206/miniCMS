@@ -21,7 +21,7 @@
      <td>
        <% form_tag({:controller => params[:controller], :action => :update_site_var}, :id => "update_site_var_form") do %>
        <%= text_area_tag(:value, nil, :rows => 14, :cols => 50, :id => "site_var_value" ) -%>
-       <%= hidden_field_tag :site, nil, { :id => "hidden_site" } %>
+       <%= hidden_field_tag :_site, nil, { :id => "hidden_site" } %>
        <%= hidden_field_tag :site_var, nil, { :id => "hidden_site_var" } %>
        <%= submit_tag %>
        <% end %>

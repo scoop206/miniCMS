@@ -7,94 +7,94 @@
 #   column: value
 
 
-digitu_index:
+foo_site1_index:
   id: 1
-  site: digitu
+  site: foo_site1
   page: index
   page_source_id: 1
   
-digitu_newsletter:
+foo_site1_newsletter:
   id: 2
-  site: digitu
+  site: foo_site1
   page: newsletter
   page_source_id:
   protected: 1
   
-digitu_welcome:
+foo_site1_welcome:
   id: 3
-  site: digitu
+  site: foo_site1
   page: welcome
   page_source_id:
       
-digituplus_index:
+foo_site2_index:
   id: 4
-  site: digituplus
+  site: foo_site2
   page: index
   page_source_id: 1
   
-digitu_head:
+foo_site1_head:
   id: 5
-  site: digitu
+  site: foo_site1
   page: _head
   page_source_id:
   protected: 1
     
-digitu_footer:
+foo_site1_footer:
   id: 6
-  site: digitu
+  site: foo_site1
   page: _footer
   page_source_id:
     
-digituplus_head:
+foo_site2_head:
   id: 7
-  site: digituplus
+  site: foo_site2
   page: _head
   page_source_id: 5
   
-digituplus_footer:
+foo_site2_footer:
   id: 8
-  site: digituplus
+  site: foo_site2
   page: _footer
   page_source_id: 6
       
 ##  commenting out for our home_controller functional tests:
 #   see: User receives 404 error when they try to hit a view that hasn't been associated with this site but is associated with another  
 #
-# digituplus_newsletter: 
+# foo_site2_newsletter: 
 #   id: 5  
-#   site: digituplus
+#   site: foo_site2
 #   page: newsletter
 #   page_source_id:
        
-digituplus_welcome:
+foo_site2_welcome:
   id: 9  
-  site: digituplus
+  site: foo_site2
   page: welcome
   page_source_id: 1
   
 # partials
 
-digitu_information_block:
+foo_site1_information_block:
   id: 10
-  site: digitu
+  site: foo_site1
   page: _information_block
   page_source_id: 11
   
-digituplus_information_block:
+foo_site2_information_block:
   id: 11  
-  site: digituplus
+  site: foo_site2
   page: _information_block
   page_source_id:
     
-digitu_404:
+foo_site1_404:
   id: 12
-  site: digitu
+  site: foo_site1
   page: 404
   page_source_id:
     
-digituplus_404:
+foo_site2_404:
   id: 13
-  site: digituplus
+  site: foo_site2
   page: 404
   page_source_id: 12
  

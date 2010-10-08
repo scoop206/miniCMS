@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Passenger way
-# touch /home/duwebadmin/duwc.newdigitu.com/current/tmp/restart.txt
+# touch /home/duwebadmin/duwc.newfoo_site1.com/current/tmp/restart.txt
 
 # Mongreal way
 

@@ -15,7 +15,7 @@ class PageTest < ActiveSupport::TestCase
     dead_page_id = pages(:index).id
     pages(:index).destroy
     ps = PagesSite.find(:first, :conditions => ["site_id = ? AND page_id = ?",
-                                                sites(:digitu), dead_page_id])
+                                                sites(:foo_site1), dead_page_id])
     assert ps.nil?
   end
   

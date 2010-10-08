@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Digital University CMS</title>
+  <title>miniCMS</title>
     <%= javascript_include_tag 'admin/jquery-1.4.2.min' %>
 	  <%= javascript_include_tag 'admin/jquery-ui-1.8.2.custom.min' %>
 	  <%= javascript_include_tag 'admin/jquery.tablesorter.min' %>
@@ -81,7 +81,7 @@
 <body>
 <div id="header">
 	<%= render :partial => 'admin/quick_lookup' %>
-	<h2>Digitu CMS</h2>
+	<h2>miniCMS</h2>
 </div> 
 <div class="colmask leftmenu"> 
     <div class="colright"> 
@@ -112,14 +112,6 @@
 				<li><%= link_to "Sites", sites_path %></li>
 				<li><%= link_to "Pages", pages_path %></li>
 				<li><%= link_to "Site Variables", site_vars_path %></li>
-			  <li><%= link_to "Regulatory Updates", reg_updates_path %></li>
-			  <li><%= link_to "News Items", news_items_path %></li>
-			  <li><%= link_to "Manage Notifications", manage_notifications_path %></li>
-			  <li><%= link_to "Free Trial Requests", free_trial_requests_path %></li>
-			  <li><%= link_to "E-news Signups", enews_signups_path %></li>			  
-			  <li><%= link_to "Customer Feedback", customer_feedbacks_path %></li>
-			  <li><%= link_to "Curriculum Preview", admin_curriculum_preview_path %></li>
-			  <li><%= link_to "Users", users_path %></li>
 			  <li><%= link_to "Change Log", changelog_path %></li>
 			</ul>
 				

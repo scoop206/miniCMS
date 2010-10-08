@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  site_id: 1
-  site_var_id: 1
-  value: MyText
+apple:
+  site: foo_site1
+  site_var: fruit
+  value: foo_site1_apple
 
-two:
-  site_id: 1
-  site_var_id: 1
-  value: MyText
+orange:
+  site: foo_site2
+  site_var: fruit
+  value: foo_site2_orange

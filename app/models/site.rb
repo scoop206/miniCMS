@@ -3,7 +3,6 @@ class Site < ActiveRecord::Base
   has_many :pages_sites, :dependent => :destroy
   has_many  :pages, 
             :through => :pages_sites
-  has_many :du_users, :dependent => :destroy
   has_many  :site_site_vars,
             :dependent => :destroy
   has_many  :site_vars,
@@ -151,6 +150,15 @@ class Site < ActiveRecord::Base
     value
   end
   
+  def set_site_var(site_var, value)
+    site_site_var = SiteSiteVar.find( :first, 
+                                      :conditions => ["site_id = ? AND site_var_id = ?", self, site_var])
+    site_site_var = SiteSiteVar.create(:site_id => self.id, :site_var_id => site_var.id) if site_site_var.nil?
+    
+    site_site_var.value = value
+    site_site_var.save!
+  end
+  
   def restart
     command = "mongrel_rails cluster::restart -C #{RAILS_ROOT}/config/#{name}_mongrel_cluster.yml"
     system command
@@ -219,6 +227,7 @@ class Site < ActiveRecord::Base
   
   def populate_page_list_from_dir(directory = nil)
   # a utility function to be used when needing to build a list of pages from a directory
+  # if no directory is passed it defaults the app/views/SITE_NAME
     directory ||= self.path
     Dir.new(directory).each do |file|
        unless file =~ /^\./

@@ -11,9 +11,9 @@ class SiteVarsController < ApplicationController
     @_sites = Site.all
     @_site_vars = SiteVar.all
     
-    unless params[:site].blank?
-      unless params[:site] == "0"
-        @site = Site.find(params[:site])
+    unless params[:_site].blank?
+      unless params[:_site] == "0"
+        @site = Site.find(params[:_site])
       else # a little hackery to get around the fact that our default site can't be looked up
         @site = Site.new
         @site.id = 0
@@ -106,31 +106,25 @@ class SiteVarsController < ApplicationController
   end
   
   def update_site_var
+    site_var = SiteVar.find(params[:site_var])
+    if params[:_site] == "0" # default site
+      site_var.set_default(params[:value])
+      Changelog.add(@current_user.login, "The site_var #{site_var.name}'s value for the default site was set to: #{params[:value]}") 
+    else 
+      site = Site.find(params[:_site])
+      site.set_site_var(site_var, params[:value])
+      Changelog.add(@current_user.login, "The site_var #{site_var.name}'s value for #{site.name} was set to: #{params[:value]}") 
+    end
     
-    # site = Site.find(params[:site])
-    # site_var = SiteVar.find(params[:site_var])
-    #value = params[:value]
-    
-    site_site_var = SiteSiteVar.find( :first, 
-                                      :conditions => ["site_id = ? AND site_var_id = ?", params[:site], params[:site_var]])
-    site_site_var = SiteSiteVar.create(:site_id => params[:site], :site_var_id => params[:site_var]) if site_site_var.nil?
-    
-    site_site_var.value = params[:value]
-    site_site_var.save!
-    
-    Changelog.add(@current_user.login, "The site_var #{site_site_var.site_var.name}'s value for #{site_site_var.site_name} was set to: #{site_site_var.value}") 
-    
-    redirect_to site_vars_path(:site => params[:site], :site_var => params[:site_var])
+    redirect_to site_vars_path(:_site => params[:_site], :site_var => params[:site_var])
                                       
   end
   
-  def get_site_var_value
-    # site_id = Site.find(params[:site])
-    # site_var = SiteVar.find(params[:site_var])
-    site_site_var = SiteSiteVar.find(:first, :conditions => ["site_id = ? AND site_var_id = ?", params[:site], params[:site_var]])
-    value = site_site_var.nil? ? "" : site_site_var.value
-    render :inline => "{\"value\": \"#{value}\"}"
-  end
+  # def get_site_var_value
+  #    site_site_var = SiteSiteVar.find(:first, :conditions => ["site_id = ? AND site_var_id = ?", params[:_site], params[:site_var]])
+  #    value = site_site_var.nil? ? "" : site_site_var.value
+  #    render :inline => "{\"value\": \"#{value}\"}"
+  #  end
   
   private
   

@@ -1,17 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-digitu:
-  name: digitu
-  mail_lists: big_list, small_list
+foo_site1:
+  name: foo_site1
 
-digituplus:
-  name: digituplus
+foo_site2:
+  name: foo_site2
   
-cues:
-  name: cues
+foo_site4:
+  name: foo_site4
   
-cuesplus:
-  name: cuesplus
+foo_site5:
+  name: foo_site5
   
-energymanagementu:
-  name: energymanagementu
+foo_site8:
+  name: foo_site8

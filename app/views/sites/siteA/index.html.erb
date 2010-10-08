@@ -1,0 +1,10 @@
+<% content_for :title, @site.official_name + " | Home Page" %>
+<h2>Welcome to <%= @site.official_name %></h2>
+
+<p>SiteA is the source site.  SiteB is configured to use it's layout and some of it's pages.</p>
+
+<p>Here's an example of a site_var:<br />
+<%= @site.site_var("example_site_var") %></p>
+
+<p>This link will only take you to a valid page if you're in siteB<br />
+<%= link_to "B Page", "/b_page" %>

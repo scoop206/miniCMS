@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   ################################################################################################
 
   def route_to_view
-  
+    
     @page = Page.find_by_name(params[:action])
   
     respond_to do |format|
@@ -49,7 +49,7 @@ class HomeController < ApplicationController
   end
 
   def get_current_user
-    current_user("normal")
+    current_user
   end
 
   ################################################################################################

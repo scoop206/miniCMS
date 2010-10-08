@@ -1,15 +1,11 @@
-class AddAdmin < ActiveRecord::Migration
-  
-  def self.admin
-    "admin"
-  end
+class AddAdminUser < ActiveRecord::Migration
   
   def self.up
     
     user_role = UserRole.find_by_name("super")
     
-    User.create(  :login => admin,
-                  :name => "Admin",
+    User.create(  :login => "admin",
+                  :name => "admin",
                   :email => "",
                   :password => "foobar",
                   :password_confirmation => "foobar",

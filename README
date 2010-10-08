@@ -1,243 +1,164 @@
-== Welcome to Rails
+** miniCMS **
 
-Rails is a web-application framework that includes everything needed to create 
-database-backed web applications according to the Model-View-Control pattern. 
+ABOUT
+A mini CMS (Content Management System)
 
-This pattern splits the view (also called the presentation) into "dumb" templates
-that are primarily responsible for inserting pre-built data in between HTML tags.
-The model contains the "smart" domain objects (such as Account, Product, Person,
-Post) that holds all the business logic and knows how to persist themselves to
-a database. The controller handles the incoming requests (such as Save New Account,
-Update Product, Show Post) by manipulating the model and directing data to the view.
+FEATURES
+* one rails app that can spin up an arbitrary number of sites (via multiple mongrels)
+* page/partial reuse between sites
+* site_vars (like a partial, but sits in the database, good for smaller chunks of info)
+* assets download management such that specific files can be served from specific sites
+* an admin page where sites, pages, users, site_vars, can be controlled
 
-In Rails, the model is handled by what's called an object-relational mapping
-layer entitled Active Record. This layer allows you to present the data from
-database rows as objects and embellish these data objects with business logic
-methods. You can read more about Active Record in
-link:files/vendor/rails/activerecord/README.html.
+BACKGROUND
 
-The controller and view are handled by the Action Pack, which handles both
-layers by its two parts: Action View and Action Controller. These two layers
-are bundled in a single package due to their heavy interdependence. This is
-unlike the relationship between the Active Record and Action Pack that is much
-more separate. Each of these packages can be used independently outside of
-Rails.  You can read more about Action Pack in
-link:files/vendor/rails/actionpack/README.html.
+I had a customer who had 7 very similar websites that were hosted on unique servers.
+The sites all shared the same basic look but were tweaked a bit depending upon the marketing niche they were targeting.
+Page updates were challenging since every site had to be updated individually in a repetitive fashion.  Also all pages were plain xhtml (no server side logic).
+Now they have one server, one set of backups.  Everything is nice and DRY.
 
-
-== Getting Started
-
-1. At the command prompt, start a new Rails application using the <tt>rails</tt> command
-   and your application name. Ex: rails myapp
-2. Change directory into myapp and start the web server: <tt>script/server</tt> (run with --help for options)
-3. Go to http://localhost:3000/ and get "Welcome aboard: You're riding the Rails!"
-4. Follow the guidelines to start developing your application
+TECH
+Rails 2.3.5
+mysql
+jquery and jqueryUI (in admin page)
+authlogic
 
 
-== Web Servers
-
-By default, Rails will try to use Mongrel if it's are installed when started with script/server, otherwise Rails will use WEBrick, the webserver that ships with Ruby. But you can also use Rails
-with a variety of other web servers.
-
-Mongrel is a Ruby-based webserver with a C component (which requires compilation) that is
-suitable for development and deployment of Rails applications. If you have Ruby Gems installed,
-getting up and running with mongrel is as easy as: <tt>gem install mongrel</tt>.
-More info at: http://mongrel.rubyforge.org
-
-Say other Ruby web servers like Thin and Ebb or regular web servers like Apache or LiteSpeed or
-Lighttpd or IIS. The Ruby web servers are run through Rack and the latter can either be setup to use
-FCGI or proxy to a pack of Mongrels/Thin/Ebb servers.
-
-== Apache .htaccess example for FCGI/CGI
-
-# General Apache options
-AddHandler fastcgi-script .fcgi
-AddHandler cgi-script .cgi
-Options +FollowSymLinks +ExecCGI
-
-# If you don't want Rails to look in certain directories,
-# use the following rewrite rules so that Apache won't rewrite certain requests
-# 
-# Example:
-#   RewriteCond %{REQUEST_URI} ^/notrails.*
-#   RewriteRule .* - [L]
-
-# Redirect all requests not available on the filesystem to Rails
-# By default the cgi dispatcher is used which is very slow
-# 
-# For better performance replace the dispatcher with the fastcgi one
-#
-# Example:
-#   RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
-RewriteEngine On
-
-# If your Rails application is accessed via an Alias directive,
-# then you MUST also set the RewriteBase in this htaccess file.
-#
-# Example:
-#   Alias /myrailsapp /path/to/myrailsapp/public
-#   RewriteBase /myrailsapp
-
-RewriteRule ^$ index.html [QSA]
-RewriteRule ^([^.]+)$ $1.html [QSA]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ dispatch.cgi [QSA,L]
-
-# In case Rails experiences terminal errors
-# Instead of displaying this message you can supply a file here which will be rendered instead
-# 
-# Example:
-#   ErrorDocument 500 /500.html
-
-ErrorDocument 500 "<h2>Application error</h2>Rails application failed to start properly"
+** OVERVIEW **
 
 
-== Debugging Rails
+HOME CONTROLLER
+The routes.rb file has been tweaked so that the home controller handles every page action.  This flattens the site and assumes that every url will be of the syntax http://sitename.com/:action
 
-Sometimes your application goes wrong.  Fortunately there are a lot of tools that
-will help you debug it and get it back on the rails.
+WORKFLOW OF A PAGE LOAD
+The @site is determined in the application controller.
+Then the home controller get's the request and renders the page based on the action that was requested and the site's page assignments.
+If the action doesn't match any of the site's pages then a 404 is rendered.
 
-First area to check is the application log files.  Have "tail -f" commands running
-on the server.log and development.log. Rails will automatically display debugging
-and runtime information to these files. Debugging info will also be shown in the
-browser on requests from 127.0.0.1.
+SITE TEMPLATES
+All site specific templates live in:
+app/views/sites/SITE_NAME
 
-You can also log your own messages directly into the log file from your code using
-the Ruby logger class from inside your controllers. Example:
+SITE ATTRIBUTES
+name - how site is identified.  Site templates folders need to have the same name
+official_name - longer name to be used in the site content (a site_var could full this function too)
+url - nice if you need to send emails and need to create links back 
+layout - name of the layout to be used by the site
+asset _folder - name of the site specific asset folder (see Assets)
 
-  class WeblogController < ActionController::Base
-    def destroy
-      @weblog = Weblog.find(params[:id])
-      @weblog.destroy
-      logger.info("#{Time.now} Destroyed Weblog ID ##{@weblog.id}!")
-    end
-  end
+Setting the site that mongrel is serving
+There are two ways to specify the site that is being rendered:
 
-The result will be a message in your log file along the lines of:
+1)  Pass in an environment when starting the mongrel process.  For example:
+	script/server -e siteA_development
+	script/server -e siteB_production
 
-  Mon Oct 08 14:22:29 +1000 2007 Destroyed Weblog ID #1
+If a vanilla environment setting is passed (e.g development) then the first site in the site table is used.
 
-More information on how to use the logger is at http://www.ruby-doc.org/core/
+2) Specify a site in the query string
+	http://siteA.com/foo_action?site=siteB
 
-Also, Ruby documentation can be found at http://www.ruby-lang.org/ including:
+Note: Option 2 can only be used if you haven't specified a site via option 1
 
-* The Learning Ruby (Pickaxe) Book: http://www.ruby-doc.org/docs/ProgrammingRuby/
-* Learn to Program: http://pine.fm/LearnToProgram/  (a beginners guide)
+ASSETS
+One tricky aspect of having multiple sites running from one code base is that permanent things that might reside in app/public cannot differ from site to site (without some trickery).
+To accomplish this, an assets folder can be created on the server outside of the app directory. 
+Each site will have it's own folder within the asset directory.  When looking for assets, the cms will first check the site specific asset folder, then the general asset folder.
+Each site has an asset_folder attribute indicating the name of this folder.
+ 
+Capistrano's deploy.rb can be tweaked to create a new symbolic link to this assets folder on each deployment.  (see Deploying section)
+Set this location in the site.rb model by modifying the ASSET_ROOT and ASSET_ROOT_SYMBOLIC_LINK vars.
 
-These two online (and free) books will bring you up to speed on the Ruby language
-and also on programming in general.
+PROTECTED PAGES
+A page can be indicated as protected in the Admin > Sites > Edit section.  
+If the page is protected then you can use the protected template to require a login before viewing those pages
+If you want to utilize this you'll need to create a protected template in the root site.
+This template would probably be the login form for your front end users.
+If you don't want to use this just don't' set any of your pages to be protected.
+
+UTILITY FUNCTIONS / HOW TO MIGRATE AN EXISTING SITE
+My customer had lot's of existing .shtml pages that needed to be recreated as pages in the CMS.
+
+There is a batch_rename.rb script in lib that will convert .shtml files to .html.erb
+
+There are also several utility functions in the site.rb model to assist:
+site.add_page(page_name) - add a single page to a site, creating the page record if necessary
+site.remove_page(page_name)
+site.populate_page_list_from_dir(dir) - read in a directories content of files, creating pages for each (if required) and then adding to site
+site.depopulate_page_list_from_dir(dir) 
+site.clone_to(target_site) - clone a whole site.  So take every page that's associated with a site and make the target_site have the same pages
+site.undo_clone_to(target_site)
+site.clone_page_sites(page, site_list) - clone a single page to another site
+site.undo_clone_page_to_sites(page, site_list)
+
+My Migration Workflow was:
+use batch_rename to get all the html files to have the correct extension (.html.erb)
+write numerous migrations that:
+use site.populate_page_list_from_dir create all pages
+use various util functions in migrations to get the sites cloned as required
+
+ADMIN PAGE
+
+The admin page can be accessed from any of the sites via:
+http://SITE_NAME.com/admin
+
+The default user/password is admin/foobar.
+
+DEPLOYING
+
+Using Capistrano, you'll need modify your deploy.rb so that each webserver spins up.
+See /conf/deploy_sample.rb
+
+Steps to Create a Site and bring it up
+
+1. Create a site in the admin backend.  
+2. If the site is a clone of another then do some migrations to clone it (or whatever you need)
+3. Add a production and development environment file for the site.  Within /config/environments copy the existing production.rb and development.rb files and change their names to SITENAME_development.rb and SITENAME_production.rb
+4.  Edit  config/database.yml .  Add two new yaml aliases: (see the example database_sample.yml)  
+SITENAME_development: development
+SITENAME_production: production 
+5. If using mongrel_cluster, generate a mongrel_cluster config file for the site.    Otherwise you can just start the site using script/server -e SITENAME_development
+
+SERVING THE SITES (MONGREL)
+
+My setup has Apache acting as a reverse proxy and using proxy_balancer and mod_rewrite to send the requests to the appropriate mongrel cluster.
+For more information on this sort of setup please see:
+http://blog.codahale.com/2006/06/19/time-for-a-grown-up-server-rails-mongrel-apache-capistrano-and-you/
+
+CONTRIBUTOR
+
+miniCMS is brought to you by Sam Cooper <sam@chgworks.com>
+
+LICENSE
+
+(The MIT License)
+
+Copyright © 2010
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+‘Software’), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED ‘AS IS’, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-== Debugger
-
-Debugger support is available through the debugger command when you start your Mongrel or
-Webrick server with --debugger. This means that you can break out of execution at any point
-in the code, investigate and change the model, AND then resume execution! 
-You need to install ruby-debug to run the server in debugging mode. With gems, use 'gem install ruby-debug'
-Example:
-
-  class WeblogController < ActionController::Base
-    def index
-      @posts = Post.find(:all)
-      debugger
-    end
-  end
-
-So the controller will accept the action, run the first line, then present you
-with a IRB prompt in the server window. Here you can do things like:
-
-  >> @posts.inspect
-  => "[#<Post:0x14a6be8 @attributes={\"title\"=>nil, \"body\"=>nil, \"id\"=>\"1\"}>,
-       #<Post:0x14a6620 @attributes={\"title\"=>\"Rails you know!\", \"body\"=>\"Only ten..\", \"id\"=>\"2\"}>]"
-  >> @posts.first.title = "hello from a debugger"
-  => "hello from a debugger"
-
-...and even better is that you can examine how your runtime objects actually work:
-
-  >> f = @posts.first
-  => #<Post:0x13630c4 @attributes={"title"=>nil, "body"=>nil, "id"=>"1"}>
-  >> f.
-  Display all 152 possibilities? (y or n)
-
-Finally, when you're ready to resume execution, you enter "cont"
 
 
-== Console
 
-You can interact with the domain model by starting the console through <tt>script/console</tt>.
-Here you'll have all parts of the application configured, just like it is when the
-application is running. You can inspect domain models, change values, and save to the
-database. Starting the script without arguments will launch it in the development environment.
-Passing an argument will specify a different environment, like <tt>script/console production</tt>.
 
-To reload your controllers and models after launching the console run <tt>reload!</tt>
 
-== dbconsole
 
-You can go to the command line of your database directly through <tt>script/dbconsole</tt>.
-You would be connected to the database with the credentials defined in database.yml.
-Starting the script without arguments will connect you to the development database. Passing an
-argument will connect you to a different database, like <tt>script/dbconsole production</tt>.
-Currently works for mysql, postgresql and sqlite.
 
-== Description of Contents
-
-app
-  Holds all the code that's specific to this particular application.
-
-app/controllers
-  Holds controllers that should be named like weblogs_controller.rb for
-  automated URL mapping. All controllers should descend from ApplicationController
-  which itself descends from ActionController::Base.
-
-app/models
-  Holds models that should be named like post.rb.
-  Most models will descend from ActiveRecord::Base.
-
-app/views
-  Holds the template files for the view that should be named like
-  weblogs/index.html.erb for the WeblogsController#index action. All views use eRuby
-  syntax.
-
-app/views/layouts
-  Holds the template files for layouts to be used with views. This models the common
-  header/footer method of wrapping views. In your views, define a layout using the
-  <tt>layout :default</tt> and create a file named default.html.erb. Inside default.html.erb,
-  call <% yield %> to render the view using this layout.
-
-app/helpers
-  Holds view helpers that should be named like weblogs_helper.rb. These are generated
-  for you automatically when using script/generate for controllers. Helpers can be used to
-  wrap functionality for your views into methods.
-
-config
-  Configuration files for the Rails environment, the routing map, the database, and other dependencies.
-
-db
-  Contains the database schema in schema.rb.  db/migrate contains all
-  the sequence of Migrations for your schema.
-
-doc
-  This directory is where your application documentation will be stored when generated
-  using <tt>rake doc:app</tt>
-
-lib
-  Application specific libraries. Basically, any kind of custom code that doesn't
-  belong under controllers, models, or helpers. This directory is in the load path.
-
-public
-  The directory available for the web server. Contains subdirectories for images, stylesheets,
-  and javascripts. Also contains the dispatchers and the default HTML files. This should be
-  set as the DOCUMENT_ROOT of your web server.
-
-script
-  Helper scripts for automation and generation.
-
-test
-  Unit and functional tests along with fixtures. When using the script/generate scripts, template
-  test files will be generated for you and placed in this directory.
-
-vendor
-  External libraries that the application depends on. Also includes the plugins subdirectory.
-  If the app has frozen rails, those gems also go here, under vendor/rails/.
-  This directory is in the load path.

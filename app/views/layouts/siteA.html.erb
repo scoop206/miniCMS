@@ -2,44 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<%# SHOW EACH PAGES TITLE, ELSE DEFAULT TO "Site Cluster" %>
 <% unless @content_for_title %>
-<title>CUES Online University</title>
+<title>Site Cluster</title>
 <% else %>
 <title><%= yield :title -%></title>
 <% end %>
-<link rel="shortcut icon" href= "<%= @site.get_favicon("favicon.ico") -%>" type = "image/x-icon"/>
-<%= stylesheet_link_tag 'cues-main' %>
-<%= stylesheet_link_tag 'cuesupro-main' if @site.name == "cuesupro" %>
-<%= stylesheet_link_tag 'all_sites' %>
-<%= javascript_include_tag 'sfhover' %>
-<%= javascript_include_tag 'jquery132' %>
-<link rel="shortcut icon" href="favicon.ico" />
-<%= yield :content_for_head %>
-<%= render :partial => @site.get_view("_js_for_user_control") if @du_user %>
-<%= render :partial => @site.get_view("_js_for_login_button") unless params[:action] == "login" %>
-<%= render :partial => @site.get_view("_google_analytics") %>
+<%= stylesheet_link_tag 'siteA' %>
 </head>
-
 <body>
-<a name="top"></a>
-<div id="wrapper">
-
-	<div id="main-wrapper">
-	  <% unless params[:action] == "help_admin" or params[:action] == "help_basic" %>
-		  <%= render :partial => @site.get_view("_head") %>
-		<% end %>
-		<div id="content">
-		<%= yield %>
-		</div><!-- end content -->
-
-		<div id="content-btm"></div><!-- end content-btm -->
-
-
-	</div><!-- end main-wrapper -->
-
-		<%= render :partial => @site.get_view("_footer") %>
-    
-</div><!-- end wrapper -->
+<%= yield %>
 </body>
 </html>
     

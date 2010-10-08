@@ -25,12 +25,12 @@ class AdminControllerTest < ActionController::IntegrationTest
     
     post    'manage_notifications', 
             :mail_list_id => mail_lists(:big_list).id, 
-            :sites => { :id => sites(:digitu).id }, 
+            :sites => { :id => sites(:foo_site1).id }, 
             :email_recipients => "foo@bar.com\r\nsusy@losy.com\r\nchocho@chachee.com",
             :commit => "yes"
             
     # assert we have an email recipient with the stripped down name
-    susy = mail_lists(:big_list).mail_list_recipients.find(:first, :conditions => ["site_id = ? AND email_address = ?", sites(:digitu), "susy@losy.com"])
+    susy = mail_lists(:big_list).mail_list_recipients.find(:first, :conditions => ["site_id = ? AND email_address = ?", sites(:foo_site1), "susy@losy.com"])
     assert !susy.nil?
   end
   

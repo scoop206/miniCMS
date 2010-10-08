@@ -1,17 +1,1 @@
 
-
-
-Processing HomeController#index (for 127.0.0.1 at 2010-05-21 10:20:59) [GET]
-  Parameters: {"action"=>"index", "controller"=>"home"}
-Rendering template within layouts/digitu
-Rendering digitu/index
-Filter chain halted as [:route_to_view] rendered_or_redirected.
-Completed in 52ms (View: 20, DB: 15) | 200 OK [http://localhost/]
-
-
-Processing HomeController#index (for 127.0.0.1 at 2010-05-21 10:24:26) [GET]
-  Parameters: {"action"=>"index", "controller"=>"home"}
-Rendering template within layouts/digitu
-Rendering digitu/index
-Filter chain halted as [:route_to_view] rendered_or_redirected.
-Completed in 759ms (View: 13, DB: 828) | 200 OK [http://localhost/]
