@@ -1,0 +1,136 @@
+<h2>Site Variables</h2>
+
+
+<table cellspacing="10">
+  <tr>
+    <td>
+      Sites
+    </td>
+    <td>
+      Variables
+    </td>
+    <td>
+      Value
+    </td>
+   </tr>
+   <tr valign="top">
+     <td><%= select :site, :id, @sites, options = {}, :size => 15, :id => "sites", :class => "site_list" -%></td>
+     
+     <td><%= select :site_var, :id, @site_vars, options = {}, :size => 15, :id => "site_vars", :class => "site_var_list" -%></td>
+     
+     <td>
+       <% form_tag({:controller => params[:controller], :action => :update_site_var}, :id => "update_site_var_form") do %>
+       <%= text_area_tag(:value, nil, :rows => 14, :cols => 50, :id => "site_var_value" ) -%>
+       <%= hidden_field_tag :site, nil, { :id => "hidden_site" } %>
+       <%= hidden_field_tag :site_var, nil, { :id => "hidden_site_var" } %>
+       <%= submit_tag %>
+       <% end %>
+     </td>
+     <td>
+        <%= link_to "Save", "#", :class => "save_button" -%>
+     </td>
+  </tr>
+</table>
+
+
+
+<br />
+
+<%= link_to 'New Site Variable', new_site_var_path %>
+&nbsp;&nbsp;<a href="#" id="edit_site_variable">Edit Site Variable</a>
+&nbsp;&nbsp;<a href="#" id="remove_site_variable">Remove Site Variable</a>
+
+<% form_tag( {:controller => params[:controller], :action => :index}, { :id => "delete_site_var_form"}) do %>
+<%= hidden_field_tag :site_var, nil, :id => "delete_site_var" %>
+<%= hidden_field_tag :_method, "delete" %>
+<%= submit_tag "Submit", :class => "admin_hidden" %>
+<% end %>
+
+<% content_for :content_for_head do %>
+<% javascript_tag do %>
+$(document).ready(function() {
+    
+    // enable save button and handle click
+    $(".save_button").button().click(function() {
+      
+      // write the value
+      var site = $("#sites").val();
+      var site_var = $("#site_vars").val();
+      
+      $("#hidden_site").attr('value',site);
+      $("#hidden_site_var").attr('value',site_var);
+      
+      $("#update_site_var_form input[type=submit]").trigger('click');
+      return false;
+    });
+    
+    // whenever the site_var is changed update the value
+    $("#site_vars").change(function() {
+      display_value(); 
+    });
+    
+    // whenever the site is changed update the value
+    $("#sites").change(function() {
+      display_value();
+    });
+    
+    // edit the site variable
+    $("#edit_site_variable").click(function() {
+      var site_var = $("#site_vars").val();
+      if (site_var > 0) {
+       document.location = "site_vars/"+site_var+"/edit"
+      } 
+      return false;
+    });
+    
+    // remove a site variable
+    $("#remove_site_variable").click(function() {
+            
+      var site_var = $("#site_vars").val();
+      if (site_var > 0) {
+        var answer = confirm("Are you sure?");
+        if (answer) {
+          debugger;
+      
+          $("#delete_site_var").attr('value', site_var);
+          $("#delete_site_var_form").attr('action','site_vars/'+site_var);
+          $("#delete_site_var_form input[type=submit]").trigger('click');
+        }
+      }
+      return false;
+    });
+    
+        
+    // display the value for the default selection
+    display_value();
+});
+
+function display_value() {
+ 
+  var site = $("#sites").val();
+  var site_var = $("#site_vars").val();
+  
+  text_area = $("#site_var_value");
+  text_area.empty();
+  text_area.append(site_var_values[site][site_var]);
+}
+
+// create arrays to autopopulate textarea content for site_var_values
+var site_var_values = [];
+<% @_sites.each do |site| %>
+site_var_values[<%= site.id %>] = [];
+<% @_site_vars.each do |site_var| %>
+site_var_values[<%= site.id %>][<%= site_var.id %>] = "<%=h escape_javascript(site.site_var_without_default(site_var)) %>";
+<% end %>
+<% end %>
+
+// add the default site to this list
+site_var_values[0] = [];
+<% @_site_vars.each do |site_var| %>
+site_var_values[0][<%= site_var.id %>] = "<%=h escape_javascript(site_var.default_value) %>";
+<% end %>
+
+
+
+<% end %>
+<% end %>

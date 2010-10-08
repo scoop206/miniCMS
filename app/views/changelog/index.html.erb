@@ -1,0 +1,26 @@
+<h2>Change Log</h2>
+<table class="tablesorter" id="changelog_table">
+  <thead>
+    <tr>
+      <th style="width: 100px;">User</th>
+      <th>Action</th>
+      <th style="width: 150px;">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @changelogs.each do |cl| %>
+    <tr>
+      <td><%= cl.user %></td>
+      <td><%=h cl.text %></td>
+      <td><%= cl.date.strftime('%m/%d/%Y at %I:%M%p') %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% content_for :content_for_head do %>
+<% javascript_tag do %>
+  $(document).ready( function() {
+    $("#changelog_table").tablesorter({headers:{2:{sorter:false}}});
+  });
+<% end %>
+<% end %>

@@ -1,0 +1,214 @@
+<h2>Editing <%= @site.name -%> Pages</h2>
+
+<h4>Pages and Partials</h4>
+
+<% unless @site.pages_sites.empty? -%>
+
+<table class="tablesorter" id="pages_table">
+	<thead>
+		<tr>
+			<th>Page / Partial</th>
+			<th>Source</th>
+			<th>Protected?</th>
+			<th class="controls">&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @site.page_sites_orderd_by_page.each do |ps| -%>
+		<tr>
+			<td><%= ps.page.name -%></td>
+			<td><%= ps.page_source.to_s -%></td>
+			<td class="protected"><%= ps.protected? ? "x" : "&nbsp;" -%></td>
+			<td class="controls">
+				&nbsp;
+				<% unless ps.page_source.nil? %>
+				<a href="#" pagesource_page_id="<%= ps.page_source.page.id -%>" pagesource_site_id="<%= ps.page_source.site.id -%>" page_id="<%= ps.page.id -%>" page_name="<%= ps.page.name -%>"class="page_edit">Edit</a>
+				<% else %>
+				<a href="#" pagesource_page_id="" pagesourse_site_id="" page_id="<%= ps.page.id -%>" page_name="<%= ps.page.name -%>" page_protected="<%= ps.protected? ? "1" : "0" -%>" class="page_edit">Edit</a>				
+				<% end %>
+				&nbsp;<%= link_to "Remove", :action => :remove_page, :pages_site_id => ps.id, :id => @site.id %>
+			</td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+
+<% else -%>
+<p class="no_records">no pages</p>
+<% end -%>
+<h4>Add Page / Partial</h4>
+<div class="add_page_box">
+<% form_tag :controller => params[:controller], :action => :associate_page do %>
+<%= collection_select(:page, :id, @pages, :id, :name, options = {}, html_options = {}) %> 
+<%= hidden_field_tag 'id', @site.id %>
+&nbsp;&nbsp;
+<%= submit_tag 'Add' %>
+<% end %>
+</div>
+
+<div id="ps_form" title="">
+	<p class="ps_info"></p>
+  <% form_tag '/sites/modify_pages_site', :id => "ps_form_form" do %>
+	<ul id="dialog_question_mark" class="ui-widget ui-helper-clearfix">
+  <li class="ui-state-default ui-corner-all" title="A protected page will require the user to authenticate with their org name before they can view.  The protected setting only works upon rendering, so for example if you have a page set protected but had it's page source pointing to a different page, setting it to be protected would not do anything.  You would need to set it protected at the source."><span class="ui-icon ui-icon-help"></span></li>
+  </ul>
+	<br />
+	<label for="protected">Protected?</label>
+  <input type="checkbox" name="ps_page_protected" id="ps_page_protected" value="1">
+  <br /><br />
+	<p>Page Source:</p>
+	<fieldset>
+	  <table>
+	    <tr>
+	     <td><label for="ps_site">Site&nbsp;</label></td>
+	     <td><%= collection_select(:ps_site, :id, @sites, :id, :name, options = {:include_blank => true}, html_options = {}) %></td>
+	    </tr>
+	    <tr>
+	     <td><label for="ps_page">Page/Partial&nbsp;</label></td>
+	     <td><select name="ps_page" id="ps_page_id"></select>
+	    </tr>
+	  </table>
+	</fieldset>		
+	<%= hidden_field_tag "ps_form_page_id" %>
+  <%= hidden_field_tag "id", @site.id %>
+  <%= submit_tag "Hidden Save", :id => "page_source_submit" %>
+	<% end %>
+</div>
+
+<div class="clear"><br/><br/></div>
+<%= link_to 'Show', @site %> |
+<%= link_to 'Back', sites_path %>
+<% content_for :content_for_head do %>
+<% javascript_tag do %>
+
+$(document).ready( function()	{
+  
+  $(".page_edit")
+		.click(function() {
+
+			// setup informative text and hidden fields in our dialog form
+			var page_id = $(this).attr("page_id");
+			var page_name = $(this).attr("page_name");
+			var pagesource_site_id = $(this).attr("pagesource_site_id"); 
+			var pagesource_page_id = $(this).attr("pagesource_page_id");
+			var page_protected = $(this).attr("page_protected");
+			
+			// setup the title of the dialog form
+			$("#ps_form").dialog("option", "title", "Editing <%= @site.name %>." + page_name)
+			
+			// insert the page_id into form so it get's passed along on submit
+			$("#ps_form_page_id").attr('value', page_id);
+			
+			//set the site dropdown to the old pagesource_site value
+			if (pagesource_site_id == "") {
+			  $("#ps_site_id").val("");
+			} else {
+			  $("#ps_site_id").val(pagesource_site_id);
+			}
+			
+			// populate the pages dropdown initially
+    	populate_dialog_pages($("#ps_page_id"));
+    	
+    	//set the pages dropdown to the old pagesource_page value
+    	if (pagesource_page_id == "") {
+    	  $("#ps_page_id").val("");
+    	} else {
+    	  $("#ps_page_id").val(pagesource_page_id);
+    	}
+    	
+    	// check the protected check box as required
+      if ($(this).attr('page_protected') == "1") {
+      	$("#ps_page_protected").attr('checked', 'checked');  
+  	  }
+    
+			$('#ps_form').dialog('open');
+			return false;
+		});
+		
+		$("#dialog_question_mark > li").button();
+		$("#dialog_question_mark > li").button().click();
+  
+  $("#ps_form").dialog({
+		autoOpen: false,
+		height: 350,
+		width: 450,
+		position: [325, 300],
+		modal: true,
+		buttons: {
+			'Save': function() {
+				var bValid = true;
+				// allFields.removeClass('ui-state-error');
+
+				// bValid = bValid && verify_both_or_no_site_page_selected;
+			
+				if (bValid) {
+			    
+			    // submit the form
+			    $("#page_source_submit").trigger('click');
+			    
+					// $(this).dialog('close');
+				}
+			},
+			Cancel: function() {
+				$(this).dialog('close');
+			}
+		},
+		close: function() {
+			// allFields.val('').removeClass('ui-state-error');
+			clear_dialog_info();
+		}
+	});
+
+	// hide the submit button in our page_source_edit form
+	$("#page_source_submit").addClass('hidden');
+	
+	// turn the pages table into a useable table using tablesorter
+	$("#pages_table").tablesorter({ headers: {2:{sorter: false}} });
+	
+  //setup a change event handler the for when the sites drop down get's changed
+	$("#ps_site_id").change(function() {
+	  var site = $(this).val();
+	  dialog_fill_pages_select($("#ps_page_id"), site);
+	});
+
+});
+
+function populate_dialog_pages(selector) {
+  var site = $("#ps_site_id").val();
+  dialog_fill_pages_select(selector, site);
+ }
+
+function clear_dialog_info()  {
+  $(".ps_info").empty();
+}
+
+function dialog_fill_pages_select(selector, site) {
+  // accepts jquery object representing the selector
+  // accepts site (string of the site name)
+  // looks up the pages in the site_pages array and populates the passed select with them
+  
+  selector.empty();
+        
+  if (site) {
+    var pages = dialog_site_pages[site];
+    var num_pages = pages.length;
+    selector.append("<option value=''></option>");
+    for (index = 0; index < num_pages; index++)  {
+    
+      var page_id = pages[index].id;
+      var page_name = pages[index].name;
+    
+      selector.append("<option value='" + page_id + "'>" + page_name + "</option>");
+    }
+  }
+}
+
+// dialog_pages association array, get's used when you edit the page source for a page
+// this array only shows pages that aren't already resourced
+
+<%= render :partial => 'admin/js_array', :locals => { :server_dialog_pages => @dialog_pages,
+                                                      :array_name => "dialog_site_pages" } %>
+
+
+<% end %>
+<% end %>

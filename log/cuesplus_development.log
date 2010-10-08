@@ -1,0 +1,533 @@
+# Logfile created on Thu Jun 17 07:41:38 -0600 2010  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2010-06-17 07:41:42) [POST]
+  Parameters: {"commit"=>"Deauthenticate", "action"=>"index", "authenticity_token"=>"pvlnUZYx1fugS43z4G0ZaYBFe1M3qKmvYvkibE6wLBA=", "deauthenticate"=>"", "controller"=>"home"}
+  [4;36;1mSite Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `sites`[0m
+  [4;35;1mSite Load (0.6ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`name` = 'cuesplus') ORDER BY name LIMIT 1[0m
+  [4;36;1mDuUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `du_users`[0m
+  [4;35;1mPage Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`name` = 'index') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.4ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 40)) LIMIT 1[0m
+  [4;36;1mPagesSite Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `pages_sites`[0m
+  [4;35;1mPageSource Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `pages_sites`[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 198) [0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = 'index') ORDER BY name LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 40)) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 198) [0m
+  [4;36;1mSite Load (0.2ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 40) ORDER BY name[0m
+Rendering template within layouts/cuesplus
+Rendering sites/cues/index
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_news_on_index') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 55)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 174) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 55) ORDER BY name[0m
+Rendered sites/cues/_news_on_index (0.5ms)
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_js_for_login_button') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 71)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 335) [0m
+  [4;36;1mSite Load (0.2ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.1ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 71) ORDER BY name[0m
+Rendered sites/digitu/_js_for_login_button (1.2ms)
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_head') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 10)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 168) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.1ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 10) ORDER BY name[0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_login_button') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 72)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 341) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 72) ORDER BY name[0m
+Rendered sites/digitu/_login_button (0.7ms)
+Rendered sites/cues/_head (11.3ms)
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_footer') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 8)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.1ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 167) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 8) ORDER BY name[0m
+Rendered sites/cues/_footer (0.6ms)
+Filter chain halted as [:route_to_view] rendered_or_redirected.
+Completed in 207ms (View: 75, DB: 14) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-06-17 07:41:43) [GET]
+
+ActionController::RoutingError (No route matches "/favicon/cuesplus/favicon.ico" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-06-17 07:41:46) [GET]
+
+ActionController::RoutingError (No route matches "/favicon/cuesplus/favicon.ico" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#login (for 127.0.0.1 at 2010-06-17 07:41:47) [GET]
+  Parameters: {"action"=>"login", "controller"=>"home"}
+  [4;35;1mSite Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `sites`[0m
+  [4;36;1mSite Load (0.3ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`name` = 'cuesplus') ORDER BY name LIMIT 1[0m
+  [4;35;1mDuUser Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `du_users`[0m
+  [4;36;1mPage Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`name` = 'login') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 42)) LIMIT 1[0m
+  [4;35;1mPagesSite Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages_sites`[0m
+Rendering template within layouts/cuesplus
+Rendering sites/digitu/protected
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_protected_boxes') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 20)) LIMIT 1[0m
+  [4;36;1mPageSource Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `pages_sites`[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 20) [0m
+  [4;36;1mSite Load (0.2ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 20) ORDER BY name[0m
+Rendered sites/digitu/_protected_boxes (0.8ms)
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_head') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 10)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 168) [0m
+  [4;35;1mSite Load (0.2ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 10) ORDER BY name[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_login_button') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.5ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 72)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 341) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 72) ORDER BY name[0m
+Rendered sites/digitu/_login_button (0.1ms)
+Rendered sites/cues/_head (4.7ms)
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_footer') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 8)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 167) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 8) ORDER BY name[0m
+Rendered sites/cues/_footer (0.1ms)
+Filter chain halted as [:route_to_view] rendered_or_redirected.
+Completed in 145ms (View: 100, DB: 12) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2010-06-17 07:56:43) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+  [4;36;1mSite Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `sites`[0m
+  [4;35;1mSite Load (0.3ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`name` = 'cuesplus') ORDER BY name LIMIT 1[0m
+  [4;36;1mDuUser Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `du_users`[0m
+  [4;35;1mDuUser Load (0.3ms)[0m   [0mSELECT * FROM `du_users` WHERE (`du_users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSite Load (0.3ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`name` = 'index') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (1.0ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 40)) LIMIT 1[0m
+  [4;36;1mPagesSite Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `pages_sites`[0m
+  [4;35;1mPageSource Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `pages_sites`[0m
+  [4;36;1mPageSource Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 198) [0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (name = 'index') ORDER BY name LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 40)) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 198) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 40) ORDER BY name[0m
+Rendering template within layouts/cuesplus
+Rendering sites/cues/index
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_news_on_index') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.4ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 55)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 174) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 55) ORDER BY name[0m
+Rendered sites/cues/_news_on_index (0.6ms)
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_js_for_login_button') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 71)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 335) [0m
+  [4;36;1mSite Load (0.2ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 71) ORDER BY name[0m
+Rendered sites/digitu/_js_for_login_button (1.2ms)
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_head') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 10)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 168) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 10) ORDER BY name[0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_login_button') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 72)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 341) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 72) ORDER BY name[0m
+Rendered sites/digitu/_login_button (0.8ms)
+Rendered sites/cues/_head (10.9ms)
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_footer') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.5ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 8)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 167) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 8) ORDER BY name[0m
+Rendered sites/cues/_footer (0.6ms)
+Filter chain halted as [:route_to_view] rendered_or_redirected.
+Completed in 255ms (View: 79, DB: 16) | 200 OK [http://localhost/index]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#login (for 127.0.0.1 at 2010-06-17 07:56:49) [GET]
+  Parameters: {"action"=>"login", "controller"=>"home"}
+  [4;35;1mSite Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `sites`[0m
+  [4;36;1mSite Load (0.3ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`name` = 'cuesplus') ORDER BY name LIMIT 1[0m
+  [4;35;1mDuUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `du_users`[0m
+  [4;36;1mDuUser Load (2.9ms)[0m   [0;1mSELECT * FROM `du_users` WHERE (`du_users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSite Load (0.5ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Columns (3.6ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (3.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`name` = 'login') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (1.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 42)) LIMIT 1[0m
+  [4;35;1mPagesSite Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `pages_sites`[0m
+Rendering template within layouts/cuesplus
+Rendering sites/digitu/protected
+  [4;36;1mPage Load (0.6ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_protected_boxes') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.4ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 20)) LIMIT 1[0m
+  [4;36;1mPageSource Columns (3.7ms)[0m   [0;1mSHOW FIELDS FROM `pages_sites`[0m
+  [4;35;1mPageSource Load (1.4ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 20) [0m
+  [4;36;1mSite Load (2.7ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 20) ORDER BY name[0m
+Rendered sites/digitu/_protected_boxes (0.8ms)
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_head') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 10)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 168) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 10) ORDER BY name[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_login_button') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 72)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.1ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 341) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 72) ORDER BY name[0m
+Rendered sites/digitu/_login_button (0.1ms)
+Rendered sites/cues/_head (4.1ms)
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_footer') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 8)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 167) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 8) ORDER BY name[0m
+Rendered sites/cues/_footer (0.1ms)
+Filter chain halted as [:route_to_view] rendered_or_redirected.
+Completed in 111ms (View: 39, DB: 29) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#login (for 127.0.0.1 at 2010-06-17 07:56:53) [POST]
+  Parameters: {"authenticate"=>"", "commit"=>"Submit", "action"=>"login", "authenticity_token"=>"pvlnUZYx1fugS43z4G0ZaYBFe1M3qKmvYvkibE6wLBA=", "account"=>"MetLife Bank", "controller"=>"home", "site_id"=>"5"}
+  [4;35;1mSite Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `sites`[0m
+  [4;36;1mSite Load (0.3ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`name` = 'cuesplus') ORDER BY name LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM `t_accounts` WHERE (name = 'MetLife Bank' OR url_name = 'MetLife Bank') LIMIT 1[0m
+  [4;36;1mAccount Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `t_accounts`[0m
+  [4;35;1mDuUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `du_users`[0m
+  [4;36;1mDuUser Load (0.4ms)[0m   [0;1mSELECT * FROM `du_users` WHERE (account_id = 11381 AND site_id = 5) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mDuUser Load (0.2ms)[0m   [0;1mSELECT `du_users`.id FROM `du_users` WHERE (`du_users`.`account_id` = 11381 AND `du_users`.site_id = 5) LIMIT 1[0m
+  [4;35;1mDuUser Load (0.2ms)[0m   [0mSELECT `du_users`.id FROM `du_users` WHERE (`du_users`.`persistence_token` = BINARY 'ad5ed8f1418feb4f94757ecc31a7d7479d7cdd33d07bada3d489c1598d78b19894364146942668f2949ad5a39c81f98ea80d01e10729428af8510ff72500d03a') LIMIT 1[0m
+  [4;36;1mDuUser Load (0.3ms)[0m   [0;1mSELECT * FROM `du_users` WHERE (`du_users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mDuUser Create (0.2ms)[0m   [0mINSERT INTO `du_users` (`created_at`, `updated_at`, `account_id`, `account`, `account_url_name`, `persistence_token`, `site_id`) VALUES('2010-06-17 13:56:53', '2010-06-17 13:56:53', 11381, 'MetLife Bank', 'metlifebank', 'ad5ed8f1418feb4f94757ecc31a7d7479d7cdd33d07bada3d489c1598d78b19894364146942668f2949ad5a39c81f98ea80d01e10729428af8510ff72500d03a', 5)[0m
+  [4;36;1mSQL (11.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mPage Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`name` = 'login') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.5ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 42)) LIMIT 1[0m
+  [4;36;1mPagesSite Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `pages_sites`[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = 'login') ORDER BY name LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 42)) LIMIT 1[0m
+Rendering template within layouts/cuesplus
+Rendering sites/cuesplus/login
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_js_for_user_control') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 14)) LIMIT 1[0m
+  [4;35;1mPageSource Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `pages_sites`[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 14) [0m
+  [4;35;1mSite Load (0.2ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;36;1mPage Load (0.6ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 14) ORDER BY name[0m
+Rendered sites/digitu/_js_for_user_control (1.1ms)
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_head') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 10)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 168) [0m
+  [4;36;1mSite Load (0.2ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 10) ORDER BY name[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_login_button') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.5ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 72)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 341) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 72) ORDER BY name[0m
+Rendered sites/digitu/_login_button (0.2ms)
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_user_info') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 26)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 26) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 26) ORDER BY name[0m
+Rendered sites/digitu/_user_info (2.6ms)
+Rendered sites/cues/_head (78.6ms)
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_footer') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 8)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 167) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 8) ORDER BY name[0m
+Rendered sites/cues/_footer (0.1ms)
+Filter chain halted as [:route_to_view] rendered_or_redirected.
+Completed in 452ms (View: 159, DB: 28) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#enews_signup (for 127.0.0.1 at 2010-06-17 07:57:01) [GET]
+  Parameters: {"action"=>"enews_signup", "controller"=>"home"}
+  [4;35;1mSite Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `sites`[0m
+  [4;36;1mSite Load (0.3ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`name` = 'cuesplus') ORDER BY name LIMIT 1[0m
+  [4;35;1mDuUser Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `du_users`[0m
+  [4;36;1mDuUser Load (0.3ms)[0m   [0;1mSELECT * FROM `du_users` WHERE (`du_users`.`id` = '5') LIMIT 1[0m
+  [4;35;1mSite Load (0.3ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 5) ORDER BY name[0m
+  [4;36;1mPage Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`name` = 'enews_signup') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 32)) LIMIT 1[0m
+  [4;35;1mPagesSite Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages_sites`[0m
+  [4;36;1mPageSource Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `pages_sites`[0m
+  [4;35;1mPageSource Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 32) [0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = 'enews_signup') ORDER BY name LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 32)) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 32) [0m
+  [4;35;1mSite Load (0.4ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 32) ORDER BY name[0m
+Rendering template within layouts/cuesplus
+Rendering sites/digitu/enews_signup
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_news_enews_signup_boxes') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 16)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 173) [0m
+  [4;36;1mSite Load (0.2ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 16) ORDER BY name[0m
+Rendered sites/cues/_news_enews_signup_boxes (23.5ms)
+  [4;36;1mEnewsSignup Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `enews_signups`[0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_js_for_user_control') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 14)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 14) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 14) ORDER BY name[0m
+Rendered sites/digitu/_js_for_user_control (0.4ms)
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_js_for_login_button') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 71)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.1ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 335) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 71) ORDER BY name[0m
+Rendered sites/digitu/_js_for_login_button (0.6ms)
+  [4;35;1mPage Load (0.5ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_head') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 10)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 168) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 10) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_login_button') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.4ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 72)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 341) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 72) ORDER BY name[0m
+Rendered sites/digitu/_login_button (0.2ms)
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_user_info') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 26)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 26) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 26) ORDER BY name[0m
+Rendered sites/digitu/_user_info (2.6ms)
+Rendered sites/cues/_head (11.7ms)
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_footer') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.5ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 8)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 167) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 8) ORDER BY name[0m
+Rendered sites/cues/_footer (0.1ms)
+Filter chain halted as [:route_to_view] rendered_or_redirected.
+Completed in 218ms (View: 157, DB: 18) | 200 OK [http://localhost/enews_signup]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2010-06-17 07:57:13) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+  [4;35;1mSite Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `sites`[0m
+  [4;36;1mSite Load (1.1ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`name` = 'cuesplus') ORDER BY name LIMIT 1[0m
+  [4;35;1mDuUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `du_users`[0m
+  [4;36;1mDuUser Load (1.5ms)[0m   [0;1mSELECT * FROM `du_users` WHERE (`du_users`.`id` = '5') LIMIT 1[0m
+  [4;35;1mSite Load (0.4ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 5) ORDER BY name[0m
+  [4;36;1mPage Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`name` = 'index') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.7ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 40)) LIMIT 1[0m
+  [4;35;1mPagesSite Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `pages_sites`[0m
+  [4;36;1mPageSource Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `pages_sites`[0m
+  [4;35;1mPageSource Load (1.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 198) [0m
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = 'index') ORDER BY name LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 40)) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 198) [0m
+  [4;35;1mSite Load (0.3ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 40) ORDER BY name[0m
+Rendering template within layouts/cuesplus
+Rendering sites/cues/index
+  [4;35;1mPage Load (0.5ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_news_on_index') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.7ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 55)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 174) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 55) ORDER BY name[0m
+Rendered sites/cues/_news_on_index (0.1ms)
+  [4;36;1mPage Load (0.8ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_js_for_user_control') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (1.0ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 14)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 14) [0m
+  [4;35;1mSite Load (0.2ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 14) ORDER BY name[0m
+Rendered sites/digitu/_js_for_user_control (0.5ms)
+  [4;35;1mPage Load (1.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_js_for_login_button') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.6ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 71)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 335) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 71) ORDER BY name[0m
+Rendered sites/digitu/_js_for_login_button (0.5ms)
+  [4;36;1mPage Load (56.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_head') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.6ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 10)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 168) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 10) ORDER BY name[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_login_button') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 72)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 341) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 72) ORDER BY name[0m
+Rendered sites/digitu/_login_button (0.2ms)
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_user_info') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.5ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 26)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 26) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 26) ORDER BY name[0m
+Rendered sites/digitu/_user_info (82.6ms)
+Rendered sites/cues/_head (94.6ms)
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_footer') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 8)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 167) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 8) ORDER BY name[0m
+Rendered sites/cues/_footer (0.1ms)
+Filter chain halted as [:route_to_view] rendered_or_redirected.
+Completed in 264ms (View: 130, DB: 83) | 200 OK [http://localhost/index]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#login (for 127.0.0.1 at 2010-06-17 08:13:06) [GET]
+  Parameters: {"action"=>"login", "controller"=>"home"}
+  [4;36;1mSite Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `sites`[0m
+  [4;35;1mSite Load (1.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`name` = 'cuesplus') ORDER BY name LIMIT 1[0m
+  [4;36;1mDuUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `du_users`[0m
+  [4;35;1mDuUser Load (0.3ms)[0m   [0mSELECT * FROM `du_users` WHERE (`du_users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSite Load (0.3ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`name` = 'login') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.4ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 42)) LIMIT 1[0m
+  [4;36;1mPagesSite Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `pages_sites`[0m
+Rendering template within layouts/cuesplus
+Rendering sites/digitu/protected
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_protected_boxes') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 20)) LIMIT 1[0m
+  [4;35;1mPageSource Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `pages_sites`[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 20) [0m
+  [4;35;1mSite Load (0.2ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 20) ORDER BY name[0m
+Rendered sites/digitu/_protected_boxes (0.7ms)
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_head') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 10)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.1ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 168) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 10) ORDER BY name[0m
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_login_button') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.4ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 72)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 341) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 72) ORDER BY name[0m
+Rendered sites/digitu/_login_button (0.6ms)
+Rendered sites/cues/_head (11.4ms)
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_footer') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 8)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 167) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 8) ORDER BY name[0m
+Rendered sites/cues/_footer (0.5ms)
+Filter chain halted as [:route_to_view] rendered_or_redirected.
+Completed in 202ms (View: 82, DB: 14) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-06-17 08:13:07) [GET]
+
+ActionController::RoutingError (No route matches "/favicon/cuesplus/favicon.ico" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-06-17 08:13:10) [GET]
+
+ActionController::RoutingError (No route matches "/favicon/cuesplus/favicon.ico" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#login (for 127.0.0.1 at 2010-06-17 08:13:11) [POST]
+  Parameters: {"authenticate"=>"", "commit"=>"Submit", "action"=>"login", "authenticity_token"=>"pvlnUZYx1fugS43z4G0ZaYBFe1M3qKmvYvkibE6wLBA=", "account"=>"MetLife Bank", "controller"=>"home", "site_id"=>"5"}
+  [4;36;1mSite Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `sites`[0m
+  [4;35;1mSite Load (0.4ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`name` = 'cuesplus') ORDER BY name LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM `t_accounts` WHERE (name = 'MetLife Bank' OR url_name = 'MetLife Bank') LIMIT 1[0m
+  [4;35;1mAccount Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `t_accounts`[0m
+  [4;36;1mDuUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `du_users`[0m
+  [4;35;1mDuUser Load (0.3ms)[0m   [0mSELECT * FROM `du_users` WHERE (account_id = 11381 AND site_id = 5) LIMIT 1[0m
+  [4;36;1mPage Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`name` = 'login') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 42)) LIMIT 1[0m
+  [4;35;1mPagesSite Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `pages_sites`[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = 'login') ORDER BY name LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 42)) LIMIT 1[0m
+Rendering template within layouts/cuesplus
+Rendering sites/cuesplus/login
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_js_for_user_control') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 14)) LIMIT 1[0m
+  [4;36;1mPageSource Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `pages_sites`[0m
+  [4;35;1mPageSource Load (0.4ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 14) [0m
+  [4;36;1mSite Load (0.2ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 14) ORDER BY name[0m
+Rendered sites/digitu/_js_for_user_control (0.8ms)
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_head') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 10)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 168) [0m
+  [4;35;1mSite Load (0.2ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;36;1mPage Load (0.1ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 10) ORDER BY name[0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_login_button') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.4ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 72)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 341) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 72) ORDER BY name[0m
+Rendered sites/digitu/_login_button (0.1ms)
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (name = '_user_info') ORDER BY name LIMIT 1[0m
+  [4;35;1mPagesSite Load (0.3ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 26)) LIMIT 1[0m
+  [4;36;1mPageSource Load (0.2ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 26) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sites` WHERE (`sites`.`id` = 1) ORDER BY name[0m
+  [4;36;1mPage Load (0.2ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 26) ORDER BY name[0m
+Rendered sites/digitu/_user_info (2.1ms)
+Rendered sites/cues/_head (13.0ms)
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (name = '_footer') ORDER BY name LIMIT 1[0m
+  [4;36;1mPagesSite Load (0.3ms)[0m   [0;1mSELECT * FROM `pages_sites` WHERE (`pages_sites`.site_id = 5 AND (page_id = 8)) LIMIT 1[0m
+  [4;35;1mPageSource Load (0.2ms)[0m   [0mSELECT * FROM `pages_sites` WHERE (`pages_sites`.`id` = 167) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sites` WHERE (`sites`.`id` = 4) ORDER BY name[0m
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 8) ORDER BY name[0m
+Rendered sites/cues/_footer (0.1ms)
+Filter chain halted as [:route_to_view] rendered_or_redirected.
+Completed in 243ms (View: 86, DB: 14) | 200 OK [http://localhost/login]

@@ -1,0 +1,14 @@
+<h2>New Site Variable</h2>
+
+<% form_for(@site_var) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', site_vars_path %>

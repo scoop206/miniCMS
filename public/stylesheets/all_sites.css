@@ -1,0 +1,139 @@
+._404	{
+	height: 200px;
+	padding-top: 40px;
+	margin-left: 3em;
+	width: 70%;
+}
+
+.du_hidden	{
+	visibility: hidden;
+}
+
+/*
+#du_user	{
+	float: right;
+	margin: 0;
+	padding: 0;
+	width: 25%;
+}
+
+#du_user p	{
+	margin: 0;
+	font-size: .8em;
+	padding: 0;
+}
+
+#du_user a	{
+	font-size: .8em;
+}
+*/
+
+form#deauthenticate_form	{
+	display: none;
+	margin: 0;
+	padding: 0;
+}
+
+#protected	{
+	padding-left: 4em;
+	padding-right: 4em;
+	padding-top: 3em;
+}
+
+#protected_table	{
+	margin-top: 1em;
+}
+
+#protected_submit {
+	display: block;
+}
+
+#protected_form {
+	margin-top:  1em;
+	position: relative;
+	padding: 1.2em 0 .6em  0;
+	margin-bottom: 0;
+}
+
+#protected_error_message	{
+	font-size: .9em;
+	color: red;
+	padding: 0 0 0 2em;
+	margin: 0;
+}
+
+.warning  {
+  color: red;
+  text-align: center;
+}
+
+#free-trial input.captcha {
+	width: 120px;
+}
+
+/* //////// Tavo Modified //////// */
+ /* CSS Edited here - Dave */
+.client-login {
+	float: right;
+	position: relative;
+	width: 50%;
+}
+.client-login .du_button {
+	background-repeat: no-repeat;
+	height: 28px;
+	width: 97px;
+	cursor: pointer;
+	float: right;
+	font-weight: bold;
+	margin: 23px 25px 0 0;
+	text-align: center;
+	text-decoration: none;
+	font-size: 80%;
+	line-height: 80%;
+}
+
+.client-login .du_button img{
+ border: 0;
+}
+
+.client-login a.logout {
+	clear: both;
+	float: right;
+	font-size: 70%;
+	color: #F00;
+	text-decoration: none;
+	font-variant: small-caps;
+	font-weight: bold;
+	padding: 5px 38px 5px 0;
+}
+
+.client-login a.logout:hover {
+	text-decoration: underline;
+}
+
+.client-login p.loginname {
+	clear: both;
+	padding: 24px 20px 0 0;
+	font-size: 80%;
+	text-align: right;
+	margin: 0;
+	line-height: 1em;
+}
+
+.client-login p.loginname strong {
+	color: #346699;
+	
+}
+
+.client-login p.loginname #deauthenticate_link	{
+	font-size: 9px;
+	color: #333333;
+}
+
+
+
+
+/* end - edit - Dave */
+
+/* //////// END Tavo Modified //////// */
+

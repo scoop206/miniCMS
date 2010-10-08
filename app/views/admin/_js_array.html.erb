@@ -1,0 +1,11 @@
+<%- _b = "" -%>
+<%- _b += "#{array_name} = [];\n" -%>
+<%- server_dialog_pages.each do |site| -%>
+  <%- _b += "#{array_name}[#{site[:site]}] = [];\n" -%>
+  <%- index = 0 -%> 
+  <%- site[:pages].each do |page| -%>
+    <%- _b += "#{array_name}[#{site[:site]}][#{index}] = {'id': '#{page[:id]}', 'name': '#{page[:name]}'};\n" -%>
+    <%- index += 1 -%>
+  <%- end -%>
+<%- end -%>
+<%= _b -%>

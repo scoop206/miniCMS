@@ -1,0 +1,8 @@
+--- 
+address: 127.0.0.1
+log_file: log/siteB_production_mongrel.log
+port: "3100"
+cwd: /var/rails/miniCMS/current
+environment: siteB_production
+pid_file: tmp/pids/siteB_production_mongrel.pid
+servers: 1

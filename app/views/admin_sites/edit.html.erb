@@ -1,0 +1,32 @@
+<h2>Editing Site</h2>
+
+<% form_for(@site) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, "Name" %><br />
+    <%= f.text_field :name %> (There are file path dependencies on the site name.  Do not change lightly.)
+  </p>
+  <p>
+    <%= f.label :official_name, "Official Name" %><br />
+    <%= f.text_field :official_name %> 
+  </p>
+  <p>
+    <%= f.label :url, "URL" %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :layout, "Layout" %><br />
+    <%= f.text_field :layout %> (This determines which html wrapper and stylesheets are applied to the site.)
+  </p>
+  <p>
+    <%= f.label :asset_folder, "Asset Folder" %><br />
+    <%= f.text_field :asset_folder, :size => 70 %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @site %> |
+<%= link_to 'Back', sites_path %>

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Digital University CMS</title>
+    <%= javascript_include_tag 'admin/jquery-1.4.2.min' %>
+	  <%= javascript_include_tag 'admin/jquery-ui-1.8.2.custom.min' %>
+	  <%= javascript_include_tag 'admin/jquery.tablesorter.min' %>
+	  <%= javascript_include_tag 'admin/jquery.tools.min' %>
+	  <%= stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.1.custom' %>
+	  <%= stylesheet_link_tag 'tablesorter/blue/style' %>
+	  <%= stylesheet_link_tag 'admin' %>	  
+	  <%= yield :content_for_head %>
+	  
+	  <!-- javascript for the quick lookup -->
+	  <% javascript_tag do %>
+ 
+    $(document).ready( function() {
+      
+      // initial setup of quicklook pages
+      populate_quick_look_pages($("#ql_page_select"));
+      
+      // setup the event handler the for site changes 
+      $("#ql_site_select").change(function() {
+        populate_quick_look_pages($("#ql_page_select"));
+      });
+      
+      $("#quick_lookup a.button").button();
+      $("#quick_lookup a.button").click( function() {
+        var _site = $("#ql_site_select").val();
+        var _page = $("#ql_page_select").val(); 
+        var _url = "<%= url_for :controller => :sites, :action => :quick_lookup_file_location -%>?page_id=" + _page + "&site_id=" + _site;
+        $.ajax( {
+          url: _url,
+          method: "GET",
+          data_type: 'json',
+          success: function(data) { // fill text field with file location of assett that needs to be updated
+            var file_location = $.parseJSON(data);
+            $("#ql_text_field").attr('value', file_location.location);
+          },
+          error: function(e) {
+            // console.log("Hit an error with the ajax request: " + e);
+          }
+        });
+        return false;
+      });
+    });
+    
+    function populate_quick_look_pages(selector) {
+      var site = $("#ql_site_select").val();
+   	  ql_fill_pages_select(selector, site);
+     }
+    
+    function ql_fill_pages_select(selector, site) {
+      // accepts jquery object representing the selector
+      // accepts site (string of the site name)
+      // looks up the pages in the site_pages array and populates the passed select with them
+      
+      selector.empty();
+            
+      var pages = ql_pages[site];
+      var num_pages = pages.length;
+  	  for (index = 0; index < num_pages; index++)  {
+  	    
+  	    var page_id = pages[index].id;
+  	    var page_name = pages[index].name;
+  	    
+  	    selector.append("<option value='" + page_id + "'>" + page_name + "</option>");
+  	  }
+    }
+    
+    // ql_pages association array, get's used when you uses quicklook pages selectors, they autopopulate to only show the pages
+    // associated with the site you have have selected
+    <%= render :partial => 'admin/js_array', :locals => { :server_dialog_pages => @ql_pages, :array_name => "ql_pages" } %>
+    
+    <% end %>
+	  
+</head>
+<body>
+<div id="header">
+	<%= render :partial => 'admin/quick_lookup' %>
+	<h2>Digitu CMS</h2>
+</div> 
+<div class="colmask leftmenu"> 
+    <div class="colright"> 
+        <div class="col1wrap"> 
+            <div class="col1"> 
+                <!-- Column 2 start --> 
+                <div id="content">
+					<% unless flash[:notice].blank? %><p class="flash_notice"><%= flash[:notice] %></p><% end %>
+					<% unless flash[:warning].blank? %><p class="flash_warning"><%= flash[:warning] %></p><% end %>
+				
+				<% # USER NAME AND LOGOUT %>
+				<% if @current_user %>
+				<div id="user_info">
+				  <p>Welcome, <%= @current_user.name %><br />
+				  <%= link_to "Logout", {:controller=> :user_sessions, :action => :destroy }, :method => :delete %></p>
+				</div>
+				<% end %>
+				
+				<%= yield %>
+			</div><!-- end content -->
+				<!-- Column 2 end --> 
+            </div> 
+        </div> 
+        <div class="col2"> 
+            <!-- Column 1 start --> 
+            
+			<ul id="links">
+				<li><%= link_to "Sites", sites_path %></li>
+				<li><%= link_to "Pages", pages_path %></li>
+				<li><%= link_to "Site Variables", site_vars_path %></li>
+			  <li><%= link_to "Regulatory Updates", reg_updates_path %></li>
+			  <li><%= link_to "News Items", news_items_path %></li>
+			  <li><%= link_to "Manage Notifications", manage_notifications_path %></li>
+			  <li><%= link_to "Free Trial Requests", free_trial_requests_path %></li>
+			  <li><%= link_to "E-news Signups", enews_signups_path %></li>			  
+			  <li><%= link_to "Customer Feedback", customer_feedbacks_path %></li>
+			  <li><%= link_to "Curriculum Preview", admin_curriculum_preview_path %></li>
+			  <li><%= link_to "Users", users_path %></li>
+			  <li><%= link_to "Change Log", changelog_path %></li>
+			</ul>
+				
+			<!-- Column 1 end --> 
+        </div> 
+    </div> 
+</div> 
+<div id="footer"> 
+</div>
+</body>
+</html>

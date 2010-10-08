@@ -1,0 +1,24 @@
+<p>
+  <b>Name:</b>
+  <%=h @site.name %>
+</p>
+<p>
+  <b>Offical Name:</b>
+  <%=h @site.official_name %>
+</p>
+<p>
+  <b>URL:</b>
+  <%=h @site.url %>
+</p>
+<p>
+  <b>Layout:</b>
+  <%=h @site.layout %>
+</p>
+<p>
+  <b>Asset Folder:</b>
+  <%=h @site.asset_folder %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

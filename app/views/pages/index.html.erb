@@ -1,0 +1,32 @@
+<h2>Pages</h2>
+
+<table class="tablesorter" id="pages_table">
+  <thead>
+  <tr>
+    <th>Name</th>
+  </tr>
+</thead>
+<tbody>
+<% @pages.each do |page| %>
+  <tr>
+    <td><%=h page.name %></td>
+    <td class="controls"><%= link_to 'Show', page %>
+    <%= link_to 'Edit', edit_page_path(page) %>
+    <%= link_to 'Remove', page, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New page', new_page_path %>
+
+<% content_for :content_for_head do %>
+<% javascript_tag do %>
+$(document).ready( function() {
+  $("#pages_table").tablesorter();
+});
+  
+<% end %>
+<% end %>

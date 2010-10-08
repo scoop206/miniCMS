@@ -1,0 +1,22 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+index:
+  name: index
+
+newsletter:
+  name: newsletter
+
+welcome:
+  name: welcome
+  
+_information_block:
+  name: _information_block
+  
+_head:
+  name: _head
+  
+_footer:
+  name: _footer
+  
+404:
+  name: 404

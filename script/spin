@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Passenger way
+# touch /home/duwebadmin/duwc.newdigitu.com/current/tmp/restart.txt
+
+# Mongreal way
+
+/var/rails/duwc/current/script/process/spawner mongrel --environment=production --instances=1 --address=204.42.157.43 --port=3000

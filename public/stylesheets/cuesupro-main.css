@@ -1,0 +1,13 @@
+#logo {
+background-image:url("/images/cuesupro/css-images/cuesupro71x300.gif");
+background-repeat:no-repeat;
+cursor:pointer;
+display:block;
+height:71px;
+left:20px;
+outline:medium none;
+position:absolute;
+top:20px;
+width:300px;
+z-index:99;
+}

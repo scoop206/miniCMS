@@ -1,0 +1,38 @@
+<h2>Listing Users</h2>
+
+<table class="tablesorter" id="userstable">
+  <thead>
+  <tr>
+    <th>Login</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+  </tr>
+  </thead>
+  <tbody>
+<% @users.each do |user| %>
+  <tr>
+    <td><%=h user.login %></td>
+    <td><%=h user.name %></td>
+    <td><%=h user.email %></td>
+    <td><%=h user.user_role.name %></td>
+    <td class="controls"><%= link_to 'Show', user %>
+    <%= "#{link_to 'Edit', edit_user_path(user)}" unless ! @current_user.super? %>
+    <%= "#{link_to('Destroy', user, :confirm => 'Are you sure?', :method => :delete)}" unless ! @current_user.super? %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to('New user', new_user_path) if @current_user.super? %>
+<% content_for :content_for_head do %>
+<% javascript_tag do %>
+
+$(document).ready(function () {
+  $("#userstable").tablesorter();
+});
+
+<% end %>
+<% end %>

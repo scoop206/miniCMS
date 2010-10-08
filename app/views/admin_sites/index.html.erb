@@ -1,0 +1,129 @@
+<h2>Sites</h2>
+
+<table class="tablesorter" id="sites_table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Official Name</th>
+    <th>URL</th>
+    <th>Layout</th>
+    <th>Status</th>
+  </tr>
+</thead>
+<tbody>
+<% @sites.each do |site| %>
+  <tr>
+    <td><%= link_to site.name, edit_pages_site_path(site) %></td>
+    <td><%=h site.official_name %></td>
+    <td><%=h site.url %></td>
+    <td><%=h site.layout %></td>
+    <td class="status" site_id="<%= site.id -%>"><% site_running = site.running? -%>
+        <%= image_tag 'white-ajax-loader.gif' %>
+        <div class="running admin_hidden">
+        Running<br />
+        <a href="#" site_id="<%= site.id -%>" act="stop" class="control_server">Stop</a>
+          <a href="#" site_id="<%= site.id -%>" act="restart" class="control_server">Restart</a>
+        </div>
+        <div class="stopped admin_hidden">
+        Stopped<br />
+        <a href="#" site_id="<%= site.id -%>" act="start" class="control_server">Start</a>
+        </div>
+    </td>    
+    <td class="controls"><%= link_to 'Edit Site Pages', edit_pages_site_path(site) %>
+    <%= link_to 'Edit Site', edit_site_path(site) %>
+    <%= link_to 'Remove', site, :confirm => "Are you sure? This could be really bad if you don't know what you're doing.", :method => :delete %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+<%= link_to 'New site', new_site_path %>
+
+
+<% content_for :content_for_head  do %>
+<% javascript_tag do %>
+
+function get_statuses() {
+  $("td.status").each(function() {
+      var td_status = $(this);
+      get_status(td_status)
+  });
+}
+
+function get_status(td_status)  {
+  // show whirly
+  var whirly = td_status.children('img').first();
+  whirly.fadeIn('fast');
+  
+  var _site_id = td_status.attr('site_id');
+  var _url = "<%= url_for :controller => params[:controller], :action => "status" %>?id=" + _site_id;
+  $.ajax({
+    url: _url,
+		type: "GET",
+		data_type: "json",
+		error: function(_e) {
+			// console.log("problem with ajax request.")
+		},
+		success:  function(data)	{
+			var result = $.parseJSON(data);
+			var running_div = td_status.children(".running").first();
+			var stopped_div = td_status.children(".stopped").first();
+			if (result.status == 1) {
+			    running_div.addClass('admin_visible');
+          running_div.removeClass('admin_hidden');
+          stopped_div.removeClass('admin_visible');
+          stopped_div.addClass('admin_hidden');
+		  } else {
+		      running_div.addClass('admin_hidden');
+          running_div.removeClass('admin_visible');
+          stopped_div.removeClass('admin_hidden');
+          stopped_div.addClass('admin_visible');
+		  }
+		  whirly.fadeOut('fast');
+		}
+  });
+}
+
+$(document).ready( function() {
+  
+  // make table nice
+  $("#sites_table").tablesorter();
+  
+  // click events for site starting, stopping, and restarting
+  $(".control_server").click( function() {
+     var act = $(this).attr('act');
+     var td_status = $(this).parents("td.status");
+     var _site_id = td_status.attr('site_id');
+     var _url = "<%= url_for :controller => params[:controller], :action => "control_server" %>?id=" + _site_id + "&act=" + act;
+		
+		 // show whirly
+     var whirly = $(this).parents("td.status").children('img').first();
+     whirly.fadeIn('fast');
+		
+		$.ajax({
+			url: _url,
+			type: "GET",
+			data_type: "json",
+			error: function(_e) {
+				// console.log("problem with ajax request.")
+			},
+			success:  function(data)	{
+				var result = $.parseJSON(data);
+				if (result.status == 1) {
+				  whirly.fadeOut('fast');
+				  get_status(td_status);
+			  }
+			}
+		});
+		return false;
+  });
+  
+  // setup views depending on which sites are running
+  get_statuses();
+  
+});
+
+
+<% end %>
+<% end %>
