@@ -1,7 +1,7 @@
 class SiteVarsController < ApplicationController
   
   layout "admin"
-  before_filter :require_user, :fetch_quick_look_stuff  
+  before_filter :require_user  
   
   # GET /site_vars
   # GET /site_vars.xml

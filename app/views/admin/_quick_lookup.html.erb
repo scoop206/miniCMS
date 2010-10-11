@@ -1,11 +1,8 @@
-<% if @ql_sites and @ql_pages %>
 <p id="quick_lookup">
 <%= label_tag :ql_page, "Site" %>
-<%= collection_select(:ql_site, :id, @ql_sites, :id, :name, options = {}, html_options = {:id => "ql_site_select"}) %>
+<%= collection_select(:ql_site, :id, ql_sites, :id, :name, options = {}, html_options = {:id => "ql_site_select"}) %>
 <%= label_tag :ql_site, "Page" %> 
 <select name="ql_page" id="ql_page_select"></select>
 <a href="#" class="button">Find Source</a>
 <%= text_field_tag "location", value = nil, :size => 65, :id => "ql_text_field" %> 
 </p>
-<% end %>
-

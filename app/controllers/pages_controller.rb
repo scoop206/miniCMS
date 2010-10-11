@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   
   layout "admin"
-  before_filter :require_user, :fetch_quick_look_stuff
+  before_filter :require_user
   
   # GET /pages
   # GET /pages.xml

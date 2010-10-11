@@ -1,7 +1,7 @@
 class ChangelogController < ApplicationController
   
   layout 'admin'
-  before_filter :require_user, :fetch_quick_look_stuff
+  before_filter :require_user
   
   def index
     @changelogs = Changelog.find(:all)

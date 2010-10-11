@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
   before_filter :require_user
-  before_filter :fetch_quick_look_stuff
 
   layout "admin"
 

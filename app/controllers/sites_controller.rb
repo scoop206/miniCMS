@@ -1,7 +1,7 @@
 class SitesController < ApplicationController
   
   layout "admin"
-  before_filter :require_user, :fetch_quick_look_stuff
+  before_filter :require_user
   
   # GET /sites
   # GET /sites.xml
