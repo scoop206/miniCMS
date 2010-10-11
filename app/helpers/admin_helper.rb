@@ -10,7 +10,7 @@ module AdminHelper
   #
   ################################################################################################
 
-  def fetch_quick_look_stuff
+  def quick_lookup_sites_pages
     unless @ql_sites and @ql_pages
       @ql_sites = Site.find(:all)
     

@@ -73,15 +73,14 @@
     
     // ql_pages association array, get's used when you use quicklook pages selectors, they autopopulate to only show the pages
     // associated with the site you have have selected
-    <%- fetch_quick_look_stuff -%>
-    <%= render :partial => 'admin/js_array', :locals => { :server_dialog_pages => @ql_pages, :array_name => "ql_pages" } %>
+    <%= render :partial => 'admin/js_array', :locals => { :array_name => "ql_pages" } %>
     
     <% end %>
 	  
 </head>
 <body>
 <div id="header">
-	<%= render :partial => 'admin/quick_lookup', :locals => { :ql_sites => @ql_sites } %>
+	<%= render :partial => 'admin/quick_lookup' %>
 	<h2>miniCMS</h2>
 </div> 
 <div class="colmask leftmenu"> 

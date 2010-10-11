@@ -1,6 +1,7 @@
+<%- quick_lookup_sites_pages -%>
 <%- _b = "" -%>
 <%- _b += "#{array_name} = [];\n" -%>
-<%- server_dialog_pages.each do |site| -%>
+<%- @ql_pages.each do |site| -%>
   <%- _b += "#{array_name}[#{site[:site]}] = [];\n" -%>
   <%- index = 0 -%> 
   <%- site[:pages].each do |page| -%>
